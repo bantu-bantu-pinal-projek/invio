@@ -1,3 +1,5 @@
+![Logo Aplikasi](./assets/images/aseli.png)
+
 # invio
 
 A new Flutter project.
