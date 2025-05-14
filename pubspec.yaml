@@ -65,10 +65,28 @@ flutter:
   - assets/icons/kotak.png
   - assets/icons/sedih.png
   - assets/icons/pengaturan.png
+  - assets/icons/rumah-isi.png
   - assets/icons/rumah.png
   - assets/icons/peti.png
-  - assets/icons/notip.png
-  - assets/icons/propil.png
+  - assets/icons/peti-isi.png
+  - assets/icons/notif-isi.png
+  - assets/icons/notif.png
+  - assets/icons/profile-isi.png
+  - assets/icons/profile.png
+  - assets/icons/ceklis.png
+  - assets/icons/Jam(2).png
+  - assets/icons/notif(navbar).png
+  - assets/icons/jam(3).png
+  - assets/images/foto.png
+  - assets/icons/camera.png
+  - assets/icons/kispray.png
+  - assets/icons/Kantor.png
+  - assets/icons/Palu.png
+  - assets/icons/sound.png
+  - assets/icons/Sport.png
+  - assets/icons/mobil.png
+  - assets/icons/Elektronik.png
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

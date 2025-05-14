@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import '../../halaman/beranda/home.dart';
+import '../../halaman/peminjaman/pinjaman.dart';
+import '../../halaman/notifikasi/notification.dart';
+import '../../halaman/riwayat pinjaman/history.dart';
+import '../../halaman/profile/profile.dart';
+
 
 class BottomNavbar extends StatelessWidget {
-  const BottomNavbar({Key? key}) : super(key: key);
+  final int activeIndex;
+  const BottomNavbar({Key? key, this.activeIndex = -1}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,20 +32,59 @@ class BottomNavbar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           _NavbarIconButton(
-            assetPath: 'assets/icons/rumah.png',
+            assetPath:
+                activeIndex == 0
+                    ? 'assets/icons/rumah-isi.png'
+                    : 'assets/icons/rumah.png',
             iconSize: iconSize,
+            onTap: () {
+              if (activeIndex != 0) {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomePage()),
+                );
+              }
+            },
           ),
           _NavbarIconButton(
-            assetPath: 'assets/icons/peti.png',
+            assetPath:
+                activeIndex == 1
+                    ? 'assets/icons/peti-isi.png'
+                    : 'assets/icons/peti.png',
             iconSize: iconSize,
+            onTap: () {
+              if (activeIndex != 1) {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const PinjamanPage()),
+                );
+              }
+            },
           ),
           _NavbarIconButton(
-            assetPath: 'assets/icons/notip.png',
+            assetPath: 'assets/icons/jam(3).png',
             iconSize: iconSize,
+            onTap: () { 
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const HistoryPage()),
+              );
+            },
           ),
           _NavbarIconButton(
-            assetPath: 'assets/icons/propil.png',
+            assetPath:
+                activeIndex == 3
+                    ? 'assets/icons/profile-isi.png'
+                    : 'assets/icons/profile.png',
             iconSize: iconSize,
+            onTap: () {
+              if (activeIndex != 3) {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ProfilePage()),
+                );
+              }
+            },
           ),
         ],
       ),
@@ -49,13 +95,18 @@ class BottomNavbar extends StatelessWidget {
 class _NavbarIconButton extends StatelessWidget {
   final String assetPath;
   final double iconSize;
+  final VoidCallback? onTap;
 
-  const _NavbarIconButton({required this.assetPath, required this.iconSize});
+  const _NavbarIconButton({
+    required this.assetPath,
+    required this.iconSize,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {}, // No navigation logic for now
+      onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Image.asset(

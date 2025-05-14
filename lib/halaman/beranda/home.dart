@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:invio/halaman/settings/settings.dart';
 import '../../komponen/navbar/navbar_bottom.dart';
+import '../../halaman/notifikasi/notification.dart';
+import '../../halaman/profile/profile.dart';
+import '../../halaman/lihat inventaris/invent.dart';
+import '../../halaman/riwayat pinjaman/history.dart';
+import '../../halaman/search/search_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -34,47 +40,83 @@ class HomePage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ProfilePage(),
+                        ),
+                      );
+                    },
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 36,
+                          height: 36,
+                          decoration: BoxDecoration(
+                            color: lightGray,
+                            borderRadius: BorderRadius.circular(radiusDefault),
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Hai,',
+                              style: TextStyle(
+                                fontSize: fontSizeS,
+                                color: darkGray,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            Text(
+                              'suff!',
+                              style: TextStyle(
+                                fontSize: fontSizeM,
+                                color: blue,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                   Row(
                     children: [
-                      Container(
-                        width: 36,
-                        height: 36,
-                        decoration: BoxDecoration(
-                          color: lightGray,
-                          borderRadius: BorderRadius.circular(radiusDefault),
+                      IconButton(
+                        icon: Image.asset(
+                          'assets/icons/notif.png',
+                          width: iconM,
+                          height: iconM,
                         ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const NotificationPage(),
+                            ),
+                          );
+                        },
                       ),
-                      const SizedBox(width: 12),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Hai,',
-                            style: TextStyle(
-                              fontSize: fontSizeS,
-                              color: darkGray,
-                              fontWeight: FontWeight.w400,
+                      IconButton(
+                        icon: Image.asset(
+                          'assets/icons/pengaturan.png',
+                          width: iconM,
+                          height: iconM,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const SettingsPage(),
                             ),
-                          ),
-                          Text(
-                            'Kaleee!',
-                            style: TextStyle(
-                              fontSize: fontSizeM,
-                              color: blue,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
+                          );
+                        },
                       ),
                     ],
-                  ),
-                  IconButton(
-                    icon: Image.asset(
-                      'assets/icons/pengaturan.png',
-                      width: iconM,
-                      height: iconM,
-                    ),
-                    onPressed: () {},
                   ),
                 ],
               ),
@@ -175,39 +217,52 @@ class HomePage extends StatelessWidget {
             // Search Area
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: margin4x),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(radiusDefault),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.08),
-                      blurRadius: 8,
-                      offset: Offset(0, 2),
-                    ),
-                  ],
-                ),
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Cari',
-                    hintStyle: TextStyle(
-                      color: borderGray,
-                      fontSize: fontSizeM,
-                    ),
-                    prefixIcon: Icon(Icons.search, color: borderGray),
-                    filled: true,
-                    fillColor: Colors.white,
-                    contentPadding: const EdgeInsets.symmetric(
-                      vertical: 0,
-                      horizontal: 20,
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(radiusDefault),
-                      borderSide: BorderSide(color: borderGray),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(radiusDefault),
-                      borderSide: BorderSide(color: borderGray),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const SearchPage()),
+                  );
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(radiusDefault),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.08),
+                        blurRadius: 8,
+                        offset: Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: TextField(
+                    enabled: false, // Disable actual text input
+                    decoration: InputDecoration(
+                      hintText: 'Cari',
+                      hintStyle: TextStyle(
+                        color: borderGray,
+                        fontSize: fontSizeM,
+                      ),
+                      prefixIcon: Icon(Icons.search, color: borderGray),
+                      filled: true,
+                      fillColor: Colors.white,
+                      contentPadding: const EdgeInsets.symmetric(
+                        vertical: 0,
+                        horizontal: 20,
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(radiusDefault),
+                        borderSide: BorderSide(color: borderGray),
+                      ),
+                      disabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(radiusDefault),
+                        borderSide: BorderSide(color: borderGray),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(radiusDefault),
+                        borderSide: BorderSide(color: borderGray),
+                      ),
                     ),
                   ),
                 ),
@@ -236,10 +291,10 @@ class HomePage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: margin4x),
                 child: ListView(
                   children: [
-                    _QuickAccessTile(
-                      icon: 'assets/icons/kotak.png',
-                      label: 'Ajukan Pinjaman',
-                    ),
+                    // _QuickAccessTile(
+                    //   icon: 'assets/icons/kotak.png',
+                    //   label: 'Ajukan Pinjaman',
+                    // ),
                     const SizedBox(height: margin2x),
                     _QuickAccessTile(
                       icon: 'assets/icons/invent.png',
@@ -262,7 +317,7 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavbar(),
+      bottomNavigationBar: const BottomNavbar(activeIndex: 0),
     );
   }
 }
@@ -285,7 +340,19 @@ class _QuickAccessTile extends StatelessWidget {
       width: double.infinity,
       height: 64,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          if (label == 'Lihat Inventaris') {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const InventPage()),
+            );
+          } else if (label == 'Riwayat Pinjaman') {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const HistoryPage()),
+            );
+          }
+        },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.white,
           elevation: 4,

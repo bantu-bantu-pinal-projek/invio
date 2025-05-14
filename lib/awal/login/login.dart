@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:invio/awal/register/register.dart';
 import 'package:invio/halaman/beranda/home.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -183,7 +184,14 @@ class LoginScreen extends StatelessWidget {
                           ),
                         ),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const RegisterPage(),
+                              ),
+                            );
+                          },
                           child: const Text(
                             'Sign Up',
                             style: TextStyle(
