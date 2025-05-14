@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../halaman/beranda/home.dart';
 import '../../halaman/peminjaman/pinjaman.dart';
-import '../../halaman/notifikasi/notification.dart';
 import '../../halaman/riwayat pinjaman/history.dart';
 import '../../halaman/profile/profile.dart';
-
 
 class BottomNavbar extends StatelessWidget {
   final int activeIndex;
@@ -64,7 +62,7 @@ class BottomNavbar extends StatelessWidget {
           _NavbarIconButton(
             assetPath: 'assets/icons/jam(3).png',
             iconSize: iconSize,
-            onTap: () { 
+            onTap: () {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => const HistoryPage()),

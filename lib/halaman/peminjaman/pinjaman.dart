@@ -9,26 +9,26 @@ class PinjamanPage extends StatelessWidget {
     {
       'itemName': 'Sony A7 Mark II',
       'borrower': 'Mr. Salimin',
-      'receivedDate': 'Mon, 04/15/2025',
-      'returnedDate': 'Mon, 04/15/2025',
+      'receivedDate': 'Sen,15/04/2025',
+      'returnedDate': 'Sen,15/04/2025',
     },
     {
       'itemName': 'Sony A7 Mark II',
       'borrower': 'Mr. Salimin',
-      'receivedDate': 'Mon, 04/15/2025',
-      'returnedDate': 'Mon, 04/15/2025',
+      'receivedDate': 'Sen,15/04/2025',
+      'returnedDate': 'Sen,15/04/2025',
     },
     {
       'itemName': 'Sony A7 Mark II',
       'borrower': 'Mr. Salimin',
-      'receivedDate': 'Mon, 04/15/2025',
-      'returnedDate': 'Mon, 04/15/2025',
+      'receivedDate': 'Sen,15/04/2025',
+      'returnedDate': 'Sen,15/04/2025',
     },
     {
       'itemName': 'Sony A7 Mark II',
       'borrower': 'Mr. Salimin',
-      'receivedDate': 'Mon, 04/15/2025',
-      'returnedDate': 'Mon, 04/15/2025',
+      'receivedDate': 'Sen,15/04/2025',
+      'returnedDate': 'Sen,15/04/2025',
     },
   ];
 
@@ -62,94 +62,108 @@ class PinjamanPage extends StatelessWidget {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        child: Column(
                           children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(12),
-                              child: Image.asset(
-                                'assets/images/foto.png',
-                                width: 64,
-                                height: 64,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            const SizedBox(width: 16),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    loan['itemName'] ?? '',
-                                    style: const TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
+                            // Top row with image and title
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                // Left side with image (less padding)
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 12),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(12),
+                                    child: Image.asset(
+                                      'assets/images/foto.png',
+                                      width: 64,
+                                      height: 64,
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
-                                  const SizedBox(height: 4),
-                                  Text(
-                                    loan['borrower'] ?? '',
-                                    style: const TextStyle(
-                                      fontSize: 14,
-                                      color: Colors.grey,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 12),
-                                  Row(
+                                ),
+                                // Right side with title and borrower
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          const Text(
-                                            'Terima',
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 13,
-                                            ),
-                                          ),
-                                          const SizedBox(height: 2),
-                                          Text(
-                                            loan['receivedDate'] ?? '',
-                                            style: const TextStyle(
-                                              fontSize: 12,
-                                              color: Colors.grey,
-                                            ),
-                                          ),
-                                        ],
+                                      Text(
+                                        loan['itemName'] ?? '',
+                                        style: const TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
-                                      const SizedBox(width: 12),
-                                      const Icon(
-                                        Icons.compare_arrows,
-                                        size: 24,
-                                        color: Colors.grey,
-                                      ),
-                                      const SizedBox(width: 12),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          const Text(
-                                            'Kembali',
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 13,
-                                            ),
-                                          ),
-                                          const SizedBox(height: 2),
-                                          Text(
-                                            loan['returnedDate'] ?? '',
-                                            style: const TextStyle(
-                                              fontSize: 12,
-                                              color: Colors.grey,
-                                            ),
-                                          ),
-                                        ],
+                                      const SizedBox(height: 4),
+                                      Text(
+                                        loan['borrower'] ?? '',
+                                        style: const TextStyle(
+                                          fontSize: 14,
+                                          color: Colors.grey,
+                                        ),
                                       ),
                                     ],
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
+                            ),
+
+                            // Bottom row with dates - centered
+                            const SizedBox(height: 12),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                // Terima date
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const Text(
+                                      'Terima',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 2),
+                                    Text(
+                                      loan['receivedDate'] ?? '',
+                                      style: const TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(width: 8),
+                                // Arrow icon
+                                const Icon(
+                                  Icons.compare_arrows,
+                                  size: 20,
+                                  color: Colors.grey,
+                                ),
+                                const SizedBox(width: 8),
+                                // Kembali date
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const Text(
+                                      'Kembali',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 2),
+                                    Text(
+                                      loan['returnedDate'] ?? '',
+                                      style: const TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ],
                         ),
